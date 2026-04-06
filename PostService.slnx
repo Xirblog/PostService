@@ -1,0 +1,29 @@
+<Solution>
+    <Folder Name="/common/">
+        <File Path=".editorconfig" />
+        <File Path="Directory.Build.props" />
+        <File Path="Directory.Packages.props" />
+    </Folder>
+    
+    <Folder Name="/src/">
+        <Project Path="src\PostService\PostService.csproj" />
+    </Folder>
+
+    <Folder Name="/src/Application/">
+        <Project Path="src\Application\PostService.Application.Abstractions\PostService.Application.Abstractions.csproj" />
+        <Project Path="src\Application\PostService.Application.Contracts\PostService.Application.Contracts.csproj" />
+        <Project Path="src\Application\PostService.Application.Models\PostService.Application.Models.csproj" />
+        <Project Path="src\Application\PostService.Application\PostService.Application.csproj" />
+    </Folder>
+
+    <Folder Name="/src/Infrastructure/">
+        <Project Path="src/Infrastructure/PostService.Infrastructure.Grpc/PostService.Infrastructure.Grpc.csproj" />
+        <Project Path="src/Infrastructure/PostService.Infrastructure.Npgsql/PostService.Infrastructure.Npgsql.csproj" />
+    </Folder>
+
+
+    <Folder Name="/src/Presentation/">
+        <File Path="Dockerfile" />
+        <Project Path="src/Presentation/PostService.Presentation.Grpc/PostService.Presentation.Grpc.csproj" />
+    </Folder>
+</Solution>
