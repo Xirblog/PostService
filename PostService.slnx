@@ -23,7 +23,6 @@
 
 
     <Folder Name="/src/Presentation/">
-        <File Path="Dockerfile" />
         <Project Path="src/Presentation/PostService.Presentation.Grpc/PostService.Presentation.Grpc.csproj" />
     </Folder>
 </Solution>
