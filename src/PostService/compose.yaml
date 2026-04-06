@@ -1,6 +1,7 @@
 ﻿services:
-  postservice:
+  post-service:
     image: post-service
+    container_name: post-service
     build:
       context: ../..
       dockerfile: src/PostService/Dockerfile

@@ -1,18 +1,18 @@
 using Grpc.Core;
 using PostService.Application.Abstractions.Integrations;
 using PostService.Application.Models.Users;
-using PostService.Infrastructure.Grpc.Proto;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using UserService.Presentation.Grpc.Protos;
 
 namespace PostService.Infrastructure.Grpc.Gateway;
 
 public class UserGateway : IUserGateway
 {
-    private readonly UserService.UserServiceClient _userServiceClient;
+    private readonly UserService.Presentation.Grpc.Protos.UserService.UserServiceClient _userServiceClient;
 
-    public UserGateway(UserService.UserServiceClient userServiceClient)
+    public UserGateway(UserService.Presentation.Grpc.Protos.UserService.UserServiceClient userServiceClient)
     {
         _userServiceClient = userServiceClient;
     }
