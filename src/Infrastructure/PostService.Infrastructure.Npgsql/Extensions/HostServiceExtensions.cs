@@ -11,9 +11,8 @@ public static class HostServiceExtensions
     public static IHost MigrateUp(this IHost host)
     {
         using IServiceScope scope = host.Services.CreateScope();
-
         ILogger logger = scope.ServiceProvider.GetRequiredService<ILogger>();
-        MigrationRunner runner = scope.ServiceProvider.GetRequiredService<MigrationRunner>();
+        IMigrationRunner runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
 
         try
         {
