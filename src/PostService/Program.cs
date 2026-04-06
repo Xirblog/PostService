@@ -11,7 +11,7 @@ builder.Services
     .AddApplication()
     .AddNpgsql(builder.Configuration)
     .AddMigrator(builder.Configuration)
-    .AddGrpcClients()
+    .AddGrpcClients(builder.Configuration)
     .AddGrpcApi();
 
 WebApplication app = builder.Build();

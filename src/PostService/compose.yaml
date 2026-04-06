@@ -6,6 +6,7 @@
       dockerfile: src/PostService/Dockerfile
     environment:
       ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}"
+      GrpcClients__UserService__Address: "https://user-service:8080"
     networks:
       - post-network
     ports:
