@@ -11,6 +11,8 @@ public interface IPostsService
 {
     Task<CreatePost.Response> CreatePostAsync(CreatePost.Request request, CancellationToken cancellationToken);
 
+    IAsyncEnumerable<PostDto> QueryAsync(PostDtoQuery query, CancellationToken cancellationToken);
+
     IAsyncEnumerable<PostDto> GetAllAsync(CancellationToken cancellationToken);
 
     Task<PostDto?> FindByPostId(Guid postId, CancellationToken cancellationToken);

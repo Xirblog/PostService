@@ -13,4 +13,8 @@
         <PackageReference Include="Grpc.AspNetCore.Server.Reflection"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\Application\PostService.Application.Contracts\PostService.Application.Contracts.csproj" />
+    </ItemGroup>
+
 </Project>

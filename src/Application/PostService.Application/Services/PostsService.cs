@@ -52,6 +52,27 @@ public class PostsService : IPostsService
         return new CreatePost.Response.Success(addedPost.MapToDto());
     }
 
+    public async IAsyncEnumerable<PostDto> QueryAsync(
+        PostDtoQuery query,
+        [EnumeratorCancellation] CancellationToken cancellationToken)
+    {
+        var persistenceQuery = PostQuery.Build(builder =>
+            builder.WithPostIds(query.PostIds.Select(id => new PostId(id)))
+                .WithNameSubstring(query.NameSubstring)
+                .WithDescriptionSubstring(query.DescriptionSubstring)
+                .WithMarkdownContentSubstring(query.MarkdownContentSubstring)
+                .WithAuthorIds(query.AuthorIds.Select(id => new UserId(id)))
+                .WithCreatedBefore(query.CreatedBefore)
+                .WithCreatedAfter(query.CreatedAfter)
+                .WithUpdatedAfter(query.UpdatedAfter)
+                .WithUpdatedBefore(query.UpdatedBefore));
+
+        await foreach (Post post in _context.PostRepository.QueryAsync(persistenceQuery, cancellationToken))
+        {
+            yield return post.MapToDto();
+        }
+    }
+
     public async IAsyncEnumerable<PostDto> GetAllAsync([EnumeratorCancellation] CancellationToken cancellationToken)
     {
         await foreach (Post post in _context.PostRepository.QueryAsync(
