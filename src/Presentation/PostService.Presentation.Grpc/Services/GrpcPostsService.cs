@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using CreatePostOp = PostService.Application.Contracts.Posts.Operations.CreatePost;
+using DeletePostOp = PostService.Application.Contracts.Posts.Operations.DeletePost;
+using UpdatePostOp = PostService.Application.Contracts.Posts.Operations.UpdatePost;
 
 namespace PostService.Presentation.Grpc.Services;
 
@@ -23,8 +26,8 @@ public class GrpcPostsService : Protos.PostService.PostServiceBase
 
     public override async Task<CreatePostResponse> CreatePost(CreatePostRequest request, ServerCallContext context)
     {
-        CreatePost.Response response = await _postService.CreatePostAsync(
-            new CreatePost.Request(
+        CreatePostOp.Response response = await _postService.CreatePostAsync(
+            new CreatePostOp.Request(
                 request.Name,
                 request.Description,
                 request.MarkdownContent,
@@ -33,12 +36,12 @@ public class GrpcPostsService : Protos.PostService.PostServiceBase
 
         return response switch
         {
-            CreatePost.Response.AuthorNotFound authorNotFound => throw new RpcException(new Status(
+            CreatePostOp.Response.AuthorNotFound authorNotFound => throw new RpcException(new Status(
                 StatusCode.NotFound,
                 authorNotFound.Message)),
-            CreatePost.Response.PersistenceFailure persistenceFailure => throw new RpcException(
+            CreatePostOp.Response.PersistenceFailure persistenceFailure => throw new RpcException(
                 new Status(StatusCode.Internal, persistenceFailure.Message)),
-            CreatePost.Response.Success success => new CreatePostResponse
+            CreatePostOp.Response.Success success => new CreatePostResponse
             {
                 PostId = success.Post.PostId.ToString(),
             },
@@ -78,8 +81,8 @@ public class GrpcPostsService : Protos.PostService.PostServiceBase
 
     public override async Task<UpdatePostResponse> UpdatePost(UpdatePostRequest request, ServerCallContext context)
     {
-        UpdatePost.Response response = await _postService.UpdatePostAsync(
-            new UpdatePost.Request(
+        UpdatePostOp.Response response = await _postService.UpdatePostAsync(
+            new UpdatePostOp.Request(
                 Guid.Parse(request.PostId),
                 request.Name,
                 request.Description,
@@ -88,12 +91,12 @@ public class GrpcPostsService : Protos.PostService.PostServiceBase
 
         return response switch
         {
-            UpdatePost.Response.AuthorNotFound authorNotFound => throw new RpcException(new Status(
+            UpdatePostOp.Response.AuthorNotFound authorNotFound => throw new RpcException(new Status(
                 StatusCode.NotFound,
                 authorNotFound.Message)),
-            UpdatePost.Response.PersistenceFailure persistenceFailure => throw new RpcException(
+            UpdatePostOp.Response.PersistenceFailure persistenceFailure => throw new RpcException(
                 new Status(StatusCode.Internal, persistenceFailure.Message)),
-            Application.Contracts.Posts.Operations.UpdatePost.Response.Success => new UpdatePostResponse
+            UpdatePostOp.Response.Success => new UpdatePostResponse
             {
                 Success = true,
             },
@@ -103,18 +106,18 @@ public class GrpcPostsService : Protos.PostService.PostServiceBase
 
     public override async Task<DeletePostResponse> DeletePost(DeletePostRequest request, ServerCallContext context)
     {
-        DeletePost.Response response = await _postService.DeletePostAsync(
-            new DeletePost.Request(Guid.Parse(request.PostId)),
+        DeletePostOp.Response response = await _postService.DeletePostAsync(
+            new DeletePostOp.Request(Guid.Parse(request.PostId)),
             context.CancellationToken);
 
         return response switch
         {
-            DeletePost.Response.PersistenceFailure persistenceFailure => throw new RpcException(
+            DeletePostOp.Response.PersistenceFailure persistenceFailure => throw new RpcException(
                 new Status(StatusCode.Internal, persistenceFailure.Message)),
-            DeletePost.Response.PostNotFound => throw new RpcException(new Status(
+            DeletePostOp.Response.PostNotFound => throw new RpcException(new Status(
                 StatusCode.NotFound,
                 "Post was not found.")),
-            DeletePost.Response.Success => new DeletePostResponse
+            DeletePostOp.Response.Success => new DeletePostResponse
             {
                 Success = true,
             },
