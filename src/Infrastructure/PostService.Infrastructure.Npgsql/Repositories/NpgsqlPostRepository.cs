@@ -25,8 +25,8 @@ public class NpgsqlPostRepository : IPostRepository
     public async Task<Post> AddAsync(Post post, CancellationToken cancellationToken)
     {
         const string sql = """
-            INSERT INTO posts (post_id, name, description, markdown_content, author_id, created_at, updated_at)
-            VALUES (@PostId, @Name, @Description, @MarkdownContent, @AuthorId, @CreatedAt, @UpdatedAt)
+            INSERT INTO posts (name, description, markdown_content, author_id, created_at, updated_at)
+            VALUES (@Name, @Description, @MarkdownContent, @AuthorId, @CreatedAt, @UpdatedAt)
             RETURNING post_id, name, description, markdown_content, author_id, created_at, updated_at;
             """;
 
@@ -34,7 +34,6 @@ public class NpgsqlPostRepository : IPostRepository
 
         PostModel model = await connection.QuerySingleAsync<PostModel>(sql, new
         {
-            PostId = post.PostId.Value,
             post.Name,
             post.Description,
             post.MarkdownContent,

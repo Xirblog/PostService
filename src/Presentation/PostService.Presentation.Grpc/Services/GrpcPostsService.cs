@@ -19,6 +19,17 @@ public class GrpcPostsService : Protos.PostService.PostServiceBase
 {
     private readonly IPostsService _postService;
 
+    private static DateTime NormalizeToUtc(DateTime dateTime)
+    {
+        return dateTime.Kind switch
+        {
+            DateTimeKind.Utc => dateTime,
+            DateTimeKind.Local => dateTime.ToUniversalTime(),
+            DateTimeKind.Unspecified => DateTime.SpecifyKind(dateTime, DateTimeKind.Utc),
+            _ => throw new ArgumentOutOfRangeException(nameof(dateTime.Kind), dateTime.Kind, "Unexpected DateTime kind."),
+        };
+    }
+
     public GrpcPostsService(IPostsService postService)
     {
         _postService = postService;
@@ -72,8 +83,8 @@ public class GrpcPostsService : Protos.PostService.PostServiceBase
             Description = post.Description,
             MarkdownContent = post.MarkdownContent,
             AuthorId = post.AuthorId.ToString(),
-            CreatedAt = post.CreatedAt.ToTimestamp(),
-            UpdatedAt = post.UpdatedAt.ToTimestamp(),
+            CreatedAt = NormalizeToUtc(post.CreatedAt).ToTimestamp(),
+            UpdatedAt = NormalizeToUtc(post.UpdatedAt).ToTimestamp(),
         }));
 
         return response;
