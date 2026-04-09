@@ -14,6 +14,7 @@ COPY ["src/Application/PostService.Application/PostService.Application.csproj", 
 COPY ["src/Application/PostService.Application.Abstractions/PostService.Application.Abstractions.csproj", "src/Application/PostService.Application.Abstractions/"]
 COPY ["src/Application/PostService.Application.Models/PostService.Application.Models.csproj", "src/Application/PostService.Application.Models/"]
 COPY ["src/Application/PostService.Application.Contracts/PostService.Application.Contracts.csproj", "src/Application/PostService.Application.Contracts/"]
+COPY ["src/Infrastructure/PostService.Infrastructure.Grpc/PostService.Infrastructure.Grpc.csproj", "src/Infrastructure/PostService.Infrastructure.Grpc/"]
 COPY ["src/Infrastructure/PostService.Infrastructure.Npgsql/PostService.Infrastructure.Npgsql.csproj", "src/Infrastructure/PostService.Infrastructure.Npgsql/"]
 COPY ["src/Presentation/PostService.Presentation.Grpc/PostService.Presentation.Grpc.csproj", "src/Presentation/PostService.Presentation.Grpc/"]
 RUN dotnet restore "src/PostService/PostService.csproj"
