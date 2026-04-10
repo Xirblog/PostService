@@ -15,6 +15,32 @@ public class NpgsqlPostRepositoryTests : IAsyncLifetime
     private ServiceProvider? _serviceProvider;
 
     [Fact]
+    public async Task QueryAsync_EmptyQuery_ReturnsAllPosts()
+    {
+        // Arrange
+        await using var dataSource = NpgsqlDataSource.Create(_container.GetConnectionString());
+        var repository = new NpgsqlPostRepository(dataSource);
+        var newPost = new Post(
+            PostId.Default,
+            "Name",
+            "Description",
+            "### Test",
+            UserId.Default,
+            DateTime.UtcNow,
+            DateTime.UtcNow);
+        await repository.AddAsync(newPost, CancellationToken.None);
+        await repository.AddAsync(newPost, CancellationToken.None);
+
+        // Act
+        List<Post> response = await repository
+            .QueryAsync(PostQuery.Build(builder => builder), CancellationToken.None)
+            .ToListAsync();
+
+        // Assert
+        Assert.Equal(2, response.Count);
+    }
+
+    [Fact]
     public async Task QueryAsync_PostId_ReturnsSinglePost()
     {
         // Arrange
