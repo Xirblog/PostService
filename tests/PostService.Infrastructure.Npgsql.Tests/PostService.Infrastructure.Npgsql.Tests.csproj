@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="coverlet.collector"/>
+        <PackageReference Include="FluentMigrator.Runner"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk"/>
+        <PackageReference Include="xunit"/>
+        <PackageReference Include="xunit.runner.visualstudio"/>
+        <PackageReference Include="NSubstitute"/>
+        <PackageReference Include="Testcontainers.PostgreSql"/>
+        <PackageReference Include="Testcontainers"/>
+        <PackageReference Include="Npgsql"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="Xunit"/>
+        <Using Include="NSubstitute"/>
+        <Using Include="Testcontainers"/>
+        <Using Include="Testcontainers.PostgreSql"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\Infrastructure\PostService.Infrastructure.Npgsql\PostService.Infrastructure.Npgsql.csproj" />
+    </ItemGroup>
+
+</Project>

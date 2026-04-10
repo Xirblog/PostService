@@ -13,12 +13,15 @@ internal sealed record PostModel(
     DateTime CreatedAt,
     DateTime UpdatedAt)
 {
-    public Post ToPost() => new Post(
-        new PostId(PostId),
-        Name,
-        Description,
-        MarkdownContent,
-        new UserId(AuthorId),
-        CreatedAt,
-        UpdatedAt);
+    public Post ToPost()
+    {
+        return new Post(
+            new PostId(PostId),
+            Name,
+            Description,
+            MarkdownContent,
+            new UserId(AuthorId),
+            CreatedAt,
+            UpdatedAt);
+    }
 }
