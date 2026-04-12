@@ -1,0 +1,31 @@
+<Solution>
+    <Folder Name="/common/">
+        <File Path=".editorconfig" />
+        <File Path="Directory.Build.props" />
+        <File Path="Directory.Packages.props" />
+    </Folder>
+    
+    <Folder Name="/src/">
+        <Project Path="src\BlogPostService\BlogPostService.csproj" />
+    </Folder>
+
+    <Folder Name="/src/Application/">
+        <Project Path="src\Application\BlogPostService.Application.Abstractions\BlogPostService.Application.Abstractions.csproj" />
+        <Project Path="src\Application\BlogPostService.Application.Contracts\BlogPostService.Application.Contracts.csproj" />
+        <Project Path="src\Application\BlogPostService.Application.Models\BlogPostService.Application.Models.csproj" />
+        <Project Path="src\Application\BlogPostService.Application\BlogPostService.Application.csproj" />
+    </Folder>
+
+    <Folder Name="/src/Infrastructure/">
+        <Project Path="src\Infrastructure\BlogPostService.Infrastructure.Grpc\BlogPostService.Infrastructure.Grpc.csproj" />
+        <Project Path="src\Infrastructure\BlogPostService.Infrastructure.Npgsql\BlogPostService.Infrastructure.Npgsql.csproj" />
+    </Folder>
+
+
+    <Folder Name="/src/Presentation/">
+        <Project Path="src/Presentation/PostService.Presentation.Grpc/PostService.Presentation.Grpc.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+        <Project Path="tests/PostService.Infrastructure.Npgsql.Tests/PostService.Infrastructure.Npgsql.Tests.csproj" />
+    </Folder>
+</Solution>

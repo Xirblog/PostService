@@ -25,7 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Infrastructure\PostService.Infrastructure.Npgsql\PostService.Infrastructure.Npgsql.csproj" />
+        <ProjectReference Include="..\..\src\Infrastructure\BlogPostService.Infrastructure.Npgsql\BlogPostService.Infrastructure.Npgsql.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,11 +1,11 @@
-﻿using FluentMigrator.Runner;
+﻿using BlogPostService.Application.Abstractions.Persistence.Queries;
+using BlogPostService.Application.Models.Posts;
+using BlogPostService.Application.Models.Users;
+using BlogPostService.Infrastructure.Npgsql.Migrations;
+using BlogPostService.Infrastructure.Npgsql.Repositories;
+using FluentMigrator.Runner;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
-using PostService.Application.Abstractions.Persistence.Queries;
-using PostService.Application.Models.Posts;
-using PostService.Application.Models.Users;
-using PostService.Infrastructure.Npgsql.Migrations;
-using PostService.Infrastructure.Npgsql.Repositories;
 
 namespace PostService.Infrastructure.Npgsql.Tests;
 

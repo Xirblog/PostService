@@ -1,17 +1,17 @@
+using BlogPostService.Application.Contracts.Posts;
+using BlogPostService.Application.Contracts.Posts.Models;
+using BlogPostService.Application.Contracts.Posts.Operations;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
-using PostService.Application.Contracts.Posts;
-using PostService.Application.Contracts.Posts.Models;
-using PostService.Application.Contracts.Posts.Operations;
 using PostService.Presentation.Grpc.Protos;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using CreatePostOp = PostService.Application.Contracts.Posts.Operations.CreatePost;
-using DeletePostOp = PostService.Application.Contracts.Posts.Operations.DeletePost;
-using UpdatePostOp = PostService.Application.Contracts.Posts.Operations.UpdatePost;
+using CreatePostOp = BlogPostService.Application.Contracts.Posts.Operations.CreatePost;
+using DeletePostOp = BlogPostService.Application.Contracts.Posts.Operations.DeletePost;
+using UpdatePostOp = BlogPostService.Application.Contracts.Posts.Operations.UpdatePost;
 
 namespace PostService.Presentation.Grpc.Services;
 
