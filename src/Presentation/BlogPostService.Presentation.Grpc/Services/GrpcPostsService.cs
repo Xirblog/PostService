@@ -13,9 +13,9 @@ using CreatePostOp = BlogPostService.Application.Contracts.Posts.Operations.Crea
 using DeletePostOp = BlogPostService.Application.Contracts.Posts.Operations.DeletePost;
 using UpdatePostOp = BlogPostService.Application.Contracts.Posts.Operations.UpdatePost;
 
-namespace PostService.Presentation.Grpc.Services;
+namespace BlogPostService.Presentation.Grpc.Services;
 
-public class GrpcPostsService : Protos.PostService.PostServiceBase
+public class GrpcPostsService : PostService.Presentation.Grpc.Protos.PostService.PostServiceBase
 {
     private readonly IPostsService _postService;
 

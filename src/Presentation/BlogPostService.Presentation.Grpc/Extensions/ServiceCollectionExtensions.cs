@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace PostService.Presentation.Grpc.Extensions;
+namespace BlogPostService.Presentation.Grpc.Extensions;
 
 public static class ServiceCollectionExtensions
 {

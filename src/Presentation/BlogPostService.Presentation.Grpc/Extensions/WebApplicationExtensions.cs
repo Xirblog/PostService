@@ -1,7 +1,7 @@
+using BlogPostService.Presentation.Grpc.Services;
 using Microsoft.AspNetCore.Builder;
-using PostService.Presentation.Grpc.Services;
 
-namespace PostService.Presentation.Grpc.Extensions;
+namespace BlogPostService.Presentation.Grpc.Extensions;
 
 public static class WebApplicationExtensions
 {

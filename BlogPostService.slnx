@@ -23,7 +23,7 @@
 
 
     <Folder Name="/src/Presentation/">
-        <Project Path="src/Presentation/PostService.Presentation.Grpc/PostService.Presentation.Grpc.csproj" />
+        <Project Path="src\Presentation\BlogPostService.Presentation.Grpc\BlogPostService.Presentation.Grpc.csproj" />
     </Folder>
     <Folder Name="/tests/">
         <Project Path="tests/PostService.Infrastructure.Npgsql.Tests/PostService.Infrastructure.Npgsql.Tests.csproj" />

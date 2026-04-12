@@ -1,9 +1,9 @@
 using BlogPostService.Application.Extensions;
 using BlogPostService.Infrastructure.Grpc.Extensions;
 using BlogPostService.Infrastructure.Npgsql.Extensions;
+using BlogPostService.Presentation.Grpc.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
-using PostService.Presentation.Grpc.Extensions;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

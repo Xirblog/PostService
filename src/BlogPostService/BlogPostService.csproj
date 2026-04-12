@@ -8,7 +8,7 @@
         <ProjectReference Include="..\Application\BlogPostService.Application\BlogPostService.Application.csproj" />
         <ProjectReference Include="..\Infrastructure\BlogPostService.Infrastructure.Npgsql\BlogPostService.Infrastructure.Npgsql.csproj" />
         <ProjectReference Include="..\Infrastructure\BlogPostService.Infrastructure.Grpc\BlogPostService.Infrastructure.Grpc.csproj" />
-        <ProjectReference Include="..\Presentation\PostService.Presentation.Grpc\PostService.Presentation.Grpc.csproj" />
+        <ProjectReference Include="..\Presentation\BlogPostService.Presentation.Grpc\BlogPostService.Presentation.Grpc.csproj" />
     </ItemGroup>
 
     <ItemGroup>
